@@ -11,6 +11,8 @@ const app = express();
 const server = createServer(app);
 const io = socketIO(server);
 let players = [];
+let magicNumber: number;
+
 
 app.get("/", (_, res) => {
   res.send("hello fellows");
@@ -26,11 +28,30 @@ io.on("connection", socket => {
       return;
     }
 
-    players.push(payload);
+    players.push({id: socket.id,
+      nickname: payload.nickname});
     console.log("new name received: ", payload.nickname);
 
     if (players.length === 2) {
       io.emit("event::gameStart");
+      console.log("game started");
+      const min = 0;
+      const max = 1337;
+      const rand = min + Math.round(Math.random() * (max - min));
+      magicNumber = rand;
+    }
+  });
+
+
+  socket.on("event::sendNumber", payload => {
+    if (payload.myNumber == magicNumber) {
+      console.log("true");
+      io.emit("event::true");
+      io.to(`${socket.id}`).emit('winner');
+    } else {
+      console.log("false")
+      console.log(magicNumber)
+      io.emit("event::false");
     }
   });
 });

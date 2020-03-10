@@ -5,14 +5,14 @@ import MagicNumber from "./components/MagicNumber";
 
 const App = () => {
   const [isGameStarted, setGameStarted] = useState(false);
-  const io = socketIO("http://localhost:3000");
+  const io = socketIO("http://localhost:8080");
 
   io.on("event::hello", () => {
     console.log("handshake");
   });
 
-  io.on("event::gameStarted", () => {
-    console.log("game started");
+  io.on("event::gameStart", () => {
+    console.log("game started front");
     setGameStarted(true);
   });
 
@@ -33,7 +33,7 @@ const App = () => {
       <div className="hero-body">
         <div className="container">
           <header className="bd-index-header">
-            {!isGameStarted ? <AskNickname io={io} /> : <MagicNumber />}
+            {!isGameStarted ? <AskNickname io={io} /> : <MagicNumber io={io} />}
           </header>
         </div>
       </div>
