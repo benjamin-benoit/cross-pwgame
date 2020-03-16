@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, TextField}  from '@material-ui/core/Button';
+import {Button, TextField}  from '@material-ui/core';
 
 const AskNickname = ({io}) => {
     const [nickname, setNickname] = useState("");
