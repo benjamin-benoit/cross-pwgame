@@ -22,19 +22,7 @@ const MagicNumber = () => {
         console.log(myNumber);
         io.emit("event::sendNumber", { myNumber: myNumber });
     };
-
-    // io.on("event::true", () => {
-    //     setResult("gagné");
-    // });
-
-    // io.on("event::false", () => {
-    //     setResult("perdu");
-    // });
-
-    // io.on("event::winner", () => {
-    //     console.log("winner")
-    // });
-
+    
     return (
         <div>
             <span>Hello {}</span><br/>
