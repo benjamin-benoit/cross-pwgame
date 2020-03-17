@@ -1,0 +1,14 @@
+.content-center {
+    width: 80%;
+    margin: 20px 0 20px 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.marginy {
+    margin: 20px;
+    padding: 20px;
+}

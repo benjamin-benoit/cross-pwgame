@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Box, Button, TextField }  from '@material-ui/core';
 import { SocketContext } from '@core/context'
 import { useHistory } from 'react-router-dom'
 
@@ -34,16 +35,18 @@ const Games = () => {
 
     if (!gameStarted) {
         return (
-            <div>
+            <div className="content-center">
                 <span>Please, wait for a player</span>
             </div>
         )
     } else {
         return (
-            <div>
-                <span>Hello choose a game</span>
-                <button onClick={magicNumber} >Magic Number</button>
-            </div>
+            <Box color="text.primary" className="content-center topbottom-margin">
+                <form>
+                    <span className="full">Hello choose a game</span>
+                    <Button onClick={magicNumber} variant="contained" color="primary" fullWidth="true" >Magic Number</Button>
+                </form>
+            </Box>
         )
     }
 }

@@ -36,7 +36,11 @@ io.on("connection", socket => {
   if (players.length === 2) {
     console.log("2 players")
     io.emit('event::gameStarted', { players });
-    console.log(players)
+    const min = 0;
+    const max = 1337;
+    const rand = min + Math.round(Math.random() * (max - min));
+    magicNumber = rand;
+
       // , {
       //     number: 0
       // }
@@ -49,38 +53,37 @@ io.on("connection", socket => {
       // }
       // );
   // }
-  
+
   socket.on('event::sendNumber', payload => {
     const number: number = payload.myNumber as number;
     console.log('joueur', payload.nickname, number);
     console.log(payload);
+    console.log(magicNumber);
+    console.log(number);
 
     switch (true) {
         case magicNumber > number:
             io.to(socket.id).emit('event::sendResponse', {
                 status: false,
-                response: 'Trop Petit',
+                response: 'More',
             });
-            console.log("Trop Petit");
             break;
         case magicNumber < number:
             io.to(socket.id).emit('event::sendResponse', {
                 status: false,
-                response: 'Trop grand',
+                response: 'Less',
             });
-            console.log("Trop grand");
             break;
         case magicNumber == number:
             io.to(socket.id).emit('event::sendResponse', {
                 status: true,
-                response: 'Félicitations tu as gagné',
+                response: 'You win',
             });
-            console.log("Trop grand");
             break;
           default:
             io.to(socket.id).emit('event::sendResponse', {
                 status: false,
-                response: 'ohohoh failed',
+                response: 'Fail',
             });
             console.log("ohohoh failed");
             break;

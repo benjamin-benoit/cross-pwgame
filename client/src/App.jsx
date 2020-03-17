@@ -5,6 +5,7 @@ import {
   Switch,
 } from 'react-router-dom'
 import SocketProvider from '@core/context/socketContext';
+import './style.css';
 
 import {AskNickname, MagicNumber, Games } from "./core/components";
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import {Button, TextField}  from '@material-ui/core';
+import { Box, Button, TextField }  from '@material-ui/core';
 import { SocketContext } from '@core/context'
 import { useHistory } from 'react-router-dom'
 
@@ -18,12 +18,12 @@ const AskNickname = () => {
     };
 
     return (
-        <div>
+        <Box color="text.primary" className="content-center">
             <form>
-                <TextField onChange={handleNickname} value={nickname} id="standard-basic" label="Standard" />
-                <Button onClick={sendNickname} variant="contained" color="primary">Send</Button>
+                <TextField onChange={handleNickname} value={nickname} id="standard-basic" label="nickname" fullWidth="true"/>
+                <Button onClick={sendNickname} variant="contained" color="primary" fullWidth="true">Send</Button>
             </form>
-        </div>
+        </Box>
     )
 }
 

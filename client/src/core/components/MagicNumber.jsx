@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Box, Button, TextField }  from '@material-ui/core';
 import { SocketContext } from '@core/context'
 import { useHistory } from 'react-router-dom'
 
@@ -22,13 +23,13 @@ const MagicNumber = () => {
         console.log(myNumber);
         io.emit("event::sendNumber", { myNumber: myNumber });
     };
-    
+
     return (
         <div>
-            <span>Hello {}</span><br/>
-            <span>{result.response}</span>
-            <input onChange={handleNumber} value={myNumber} ></input>
-            <button onClick={sendNumber} >Send number</button>
+            <span fullWidth="true">Hello {}</span>
+            <TextField onChange={handleNumber} value={myNumber} fullWidth="true"/>
+            <Button onClick={sendNumber} variant="contained" color="primary" fullWidth="true">Send number</Button>
+            <span fullWidth="true">{result.response}</span>
         </div>
     )
 }
