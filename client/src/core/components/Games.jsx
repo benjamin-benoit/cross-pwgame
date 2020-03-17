@@ -13,16 +13,17 @@ const Games = () => {
         io.on('event::sendResponse', (data) => {
             setResponse(data);
         });
+        io.on('event::gameStarted', () => {
+            setGameStarted(true);
+            console.log(gameStarted);
+        });
     }, [io]);
 
     const magicNumber = () => {
         history.push('/magicNumber')
     };
 
-    io.on("event::gameStarted" = () => {
-        setGameStarted(true)
-        console.log(gameStarted);
-    });
+   
 
     if (!gameStarted) {
         return (

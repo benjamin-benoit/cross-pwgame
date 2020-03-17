@@ -23,6 +23,8 @@ io.on("connection", socket => {
   socket.emit("event::hello");
 
   socket.on("event::initialize", payload => {
+    console.log(payload)
+    players.push({ nickname: payload.nickname, score: 0 });
     // if (players.length == 1) {
     //   io.to(socket.id).emit('event::gameStarted'
       // , {
@@ -32,7 +34,9 @@ io.on("connection", socket => {
   //     return;
   // }
   if (players.length === 2) {
-      io.emit('event::gameStarted', { players });
+    console.log("2 players")
+    io.emit('event::gameStarted', { players });
+    console.log(players)
       // , {
       //     number: 0
       // }
