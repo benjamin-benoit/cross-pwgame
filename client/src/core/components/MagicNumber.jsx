@@ -25,12 +25,12 @@ const MagicNumber = () => {
     };
 
     return (
-        <div>
+        <Box color="text.primary" className="content-center">
             <span fullWidth="true">Hello {}</span>
             <TextField onChange={handleNumber} value={myNumber} fullWidth="true"/>
             <Button onClick={sendNumber} variant="contained" color="primary" fullWidth="true">Send number</Button>
             <span fullWidth="true">{result.response}</span>
-        </div>
+        </Box>
     )
 }
 
