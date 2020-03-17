@@ -18,6 +18,13 @@ const Games = () => {
             console.log(gameStarted);
         });
     }, [io]);
+    useEffect(() => {
+        io.on('event::gameStarted', (player) => {
+            setGameStarted(true);
+            console.log(player);
+            console.log(gameStarted);
+        });
+    }, []);
 
     const magicNumber = () => {
         history.push('/magicNumber')

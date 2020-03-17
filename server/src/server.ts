@@ -70,9 +70,10 @@ io.on("connection", socket => {
 
 
 
-  socket.on('event::checkNumber', payload => {
+  socket.on('event::sendNumber', payload => {
     const number: number = payload.myNumber as number;
     console.log('joueur', payload.nickname, number);
+    console.log(payload);
 
     switch (true) {
         case magicNumber > number:
@@ -80,25 +81,29 @@ io.on("connection", socket => {
                 status: false,
                 response: 'Trop Petit',
             });
+            console.log("Trop Petit");
             break;
         case magicNumber < number:
             io.to(socket.id).emit('event::sendResponse', {
                 status: false,
                 response: 'Trop grand',
             });
+            console.log("Trop grand");
             break;
         case magicNumber == number:
             io.to(socket.id).emit('event::sendResponse', {
                 status: true,
                 response: 'Félicitations tu as gagné',
             });
+            console.log("Trop grand");
             break;
-            default:
-                io.to(socket.id).emit('event::sendResponse', {
-                    status: false,
-                    response: 'ohohoh failed',
-                });
-                break;
+          default:
+            io.to(socket.id).emit('event::sendResponse', {
+                status: false,
+                response: 'ohohoh failed',
+            });
+            console.log("ohohoh failed");
+            break;
         }
     });
 

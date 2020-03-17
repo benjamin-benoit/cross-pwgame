@@ -10,7 +10,6 @@ import {AskNickname, MagicNumber, Games } from "./core/components";
 
 function App() {
   return (
-    <>
       <SocketProvider>
         <Router>
           <Switch>
@@ -20,7 +19,6 @@ function App() {
           </Switch>
         </Router>
       </SocketProvider>
-    </>
   );
 };
 export default App;

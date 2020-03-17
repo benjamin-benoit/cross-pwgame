@@ -10,7 +10,7 @@ const MagicNumber = () => {
 
     useEffect(() => {
         io.on('event::sendResponse', (data) => {
-            setResponse(data);
+            setResult(data);
         });
     }, [io]);
 
@@ -20,7 +20,7 @@ const MagicNumber = () => {
 
     const sendNumber = () => {
         console.log(myNumber);
-        io.emit("event::sendNumber", {myNumber});
+        io.emit("event::sendNumber", { myNumber: myNumber });
     };
 
     // io.on("event::true", () => {
@@ -37,8 +37,8 @@ const MagicNumber = () => {
 
     return (
         <div>
-            <span>Hello {}</span>
-            <span>{result.status}</span>
+            <span>Hello {}</span><br/>
+            <span>{result.response}</span>
             <input onChange={handleNumber} value={myNumber} ></input>
             <button onClick={sendNumber} >Send number</button>
         </div>
