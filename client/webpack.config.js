@@ -9,6 +9,12 @@ module.exports = {
     filename: "bundle.js",
     path: __dirname + "/dist"
   },
+  resolve: {
+    alias: {
+      "src": path.resolve(__dirname, 'src/'),
+      "@core": path.resolve(__dirname, 'src/core')
+    }
+  },
   module: {
     rules: [
       {
@@ -28,6 +34,9 @@ module.exports = {
         }
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   plugins: [
     new HTMLWebpackPlugin({

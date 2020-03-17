@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {Button, TextField}  from '@material-ui/core';
+import { SocketContext } from '@core/context'
+import { useHistory } from 'react-router-dom'
 
-const AskNickname = ({io}) => {
+const AskNickname = () => {
     const [nickname, setNickname] = useState("");
+    const io = useContext(SocketContext);
+    let history = useHistory()
 
     const handleNickname = event => {
         setNickname(event.target.value);
@@ -10,6 +14,7 @@ const AskNickname = ({io}) => {
 
     const sendNickname = () => {
         io.emit("event::initialize", {nickname});
+        history.push('/games')
     };
 
     return (
