@@ -64,28 +64,26 @@ io.on("connection", socket => {
     switch (true) {
         case magicNumber > number:
             io.to(socket.id).emit('event::sendResponse', {
-                status: false,
                 response: 'More',
             });
             break;
         case magicNumber < number:
             io.to(socket.id).emit('event::sendResponse', {
-                status: false,
                 response: 'Less',
             });
             break;
         case magicNumber == number:
             io.to(socket.id).emit('event::sendResponse', {
-                status: true,
                 response: 'You win',
             });
+            // const player = players.find(player => player.nickname == payload.nickname);
+            // player.score += 1; 
+            // player.score !== 3 ? io.emit("event::newParty", { players }) : socket.emit("event::endGame", { player })
             break;
           default:
             io.to(socket.id).emit('event::sendResponse', {
-                status: false,
                 response: 'Fail',
             });
-            console.log("ohohoh failed");
             break;
         }
     });
